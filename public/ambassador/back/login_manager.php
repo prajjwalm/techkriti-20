@@ -12,8 +12,8 @@
     // fb-init
     require_once 'vendor/autoload.php';
     $fb = new Facebook\Facebook([
-        'app_id' => '1722352191243948',
-        'app_secret' => '36ac67e060bcb49412e8008daec435cb',
+        'app_id' => 'xxx',
+        'app_secret' => 'xxxxx',
         'default_graph_version' => 'v3.3',
     ]);
     $helper = $fb->getJavaScriptHelper();
