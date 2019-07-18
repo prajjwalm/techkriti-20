@@ -8,7 +8,7 @@ $(function () {
     $.ajaxSetup({cache: true});
     $.getScript("https://connect.facebook.net/en_US/sdk.js", function () {
         FB.init({
-            appId: 'xxx',
+            appId: '1722352191243948',
             cookie: true,
             xfbml: true,
             status: true,

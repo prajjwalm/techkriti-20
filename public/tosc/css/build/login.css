@@ -284,6 +284,12 @@ h5 {
   text-align: center;
 }
 
+#success {
+  text-transform: unset;
+  text-align: unset;
+  font-family: "Montserrat", sans-serif;
+}
+
 .title:after {
   content: "";
   display: block;
@@ -351,12 +357,6 @@ h5 {
 
   .main-input.xxl {
     width: 256px;
-  }
-
-  .register {
-    min-width: 256px;
-    padding-left: 16px;
-    padding-right: 16px;
   }
 }
 .lds-ellipsis {

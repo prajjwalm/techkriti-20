@@ -327,6 +327,12 @@ h5 {
   text-align: center;
 }
 
+#success {
+  text-transform: unset;
+  text-align: unset;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .title:after {
   content: "";
   display: block;

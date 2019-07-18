@@ -29,8 +29,6 @@ $(function () {
     
     $("input[type=submit]").click(function () {
 
-	
-
         // check if fb is properly connected
         if (FB_LOADED) {
             // check for fb login and permissions
@@ -74,7 +72,7 @@ $(function () {
 
                                     // send ajax request to server
                                     if (all_finputs_ok) {
-                                        // alert("sending ajax");
+                                        alert("sending ajax");
                                         console.log(userid);
                                         console.log(username);
                                         // console.log(useremail);

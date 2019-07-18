@@ -12,14 +12,12 @@
     
 	<link href="assets/icons/fa/css/all.min.css" rel="stylesheet">
     <link href="css/build/login.css" rel="stylesheet">
+    <link href="css/build/radio.css" rel="stylesheet">
 
-    <!-- Library Scripts relying on nothing -->
+    <!-- Library Scripts -->
 	<script src = "js/jquery-3.2.1.min.js"></script>
 
-    <!-- FB support module, relies only on jQuery -->
-    <script src = "js/login/fb_support.js"></script>
-
-    <!-- Page Logic, Relies on: jQuery, fb_support -->
+    <!-- My Scripts -->
     <script src = "js/login/main.js"></script>
 
     <link rel="shortcut icon" type="image/x-icon" href="assets/icons/favicon.ico" />
@@ -28,36 +26,25 @@
     <div id = "back-color">
         <img src="assets/images/write.jpg" alt="" />
     </div>
-    <div class = "register">
-        <h2 class = "title"> Application Form</h2>
+    <div class = "register" id = "form-box">
+        <h2 class = "title"> Registration Form</h2>
         <form id = "main-form" novalidate>
-            <div id = "fbspace">
-                Continue with facebook to autofill name(You must do this to proceed):
-                <div id = "fbbutton">
-                    <div id ="fbspinner"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
-                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3&appId=1722352191243948&autoLogAppEvents=1"></script>
-
-                    <!-- Add permissions needed to data-scope -->
-                    <div class="fb-login-button" data-scope="" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="true"></div>
-                </div>
-            </div>
-            <h4> Personal Details </h4>
+            <h4> Details of Team member 1 </h4>
             <div class = "row">
-                <div id = "name" class="main-input cell" autocomplete = "off">
+                <div id = "name" class="main-input cell" >
                     <div class="group">
-                        <input type="text" class="xinput" id="name_input" placeholder="&nbsp;" readonly/>
-                        <!-- validity is anyway true after jquery -->
-                        <label for="name_input">Name <i class="fab fa-facebook-square"></i></label>
+                        <input type="text" class="xinput" id="name_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]{2,32}$" />
+                        <label for="name_input">Name *</label>
                         <div class="bar"></div>
                     </div>
                     <div class = "undertext"> 
                         <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
                     </div>
                 </div>
-                <div id = "college" class="main-input cell xl" autocomplete = "off">
+                <div id = "pgname" class="main-input cell">
                     <div class="group">
-                        <input type="text" class="xinput" id="college_name_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]+$"/>
-                        <label for="college_name_input">College/University Name *</label>
+                        <input type="text" class="xinput" id="parent_name_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]{2,32}$"/>
+                        <label for="parent_name_input">Parent's/Guardian's Name *</label>
                         <div class="bar"></div>
                     </div>
                     <div class = "undertext"> 
@@ -65,153 +52,206 @@
                     </div>
                 </div>
             </div>
-            <h4> Contact Details </h4>
             <div class = "row">
-                <div id = "mob" class="main-input cell s" autocomplete = "off">
+                <div id = "dob" class="main-input cell s">
                     <div class="group">
-                        <input type="tel" class="xinput" id="mob_input" placeholder="&nbsp;" required pattern="^(\+?\d{1,4}[- ]?)?\d{10}$">
-                        <label for="mob_input">Mobile no. *</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class = "undertext"> 
-                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
-                    </div>
-                </div>
-                <div id = "whatsapp" class="main-input cell s" autocomplete = "off">
-                    <div class="group">
-                        <input type="tel" class="xinput" id="whatsapp_input" placeholder="&nbsp;" pattern="^(\+?\d{1,4}[- ]?)?\d{10}$">
-                        <label for="whatsapp_input">WhatsApp No.</label>
+                        <input type="date" class="xinput" id="dob_input" placeholder="&nbsp;">
+                        <label for="dob_input">Date of Birth *</label>
                         <div class="bar"></div>
                     </div>
                 </div>
-                <div id = "email" class="main-input cell l" autocomplete = "off">
+                <div id = "email" class="main-input cell l">
                     <div class="group">
                         <input type="email" class="xinput" id="email_input" placeholder="&nbsp;" required >
                         <label for="email_input">Email Address *</label>
                         <div class="bar"></div>
                     </div>
                     <div class = "undertext">
-                        <span class = "undertext-info">Preferrably College Email </span>
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                    </div>
+                </div>
+                <div id = "mob" class="main-input cell s">
+                    <div class="group">
+                        <input type="tel" class="xinput" id="mob_input" placeholder="&nbsp;" required pattern="^(\+?\d{1,4}[- ]?)?\d{10}$">
+                        <label for="mob_input">Mobile no. *</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
                         <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
                     </div>
                 </div>
             </div>
-            <h4> Your College Address </h4>
             <div class = "row">
-                <div id = "address_line1" class="main-input cell xxl" autocomplete = "off">
+                <div id = "grade" class="radio-input cell l">
+                    Grade:
+                    <div class="radio_space">
+                        <label for="9th" class="radio">
+                            <input type="radio" name="student-class" id="9th" value="9" class="hidden"/>
+                            <span class="label"></span>9th
+                        </label>
+
+                        <label for="10th" class="radio">
+                            <input type="radio" name="student-class" id="10th" value="10" class="hidden"/>
+                            <span class="label"></span>10th
+                        </label>
+
+                        <label for="11th" class="radio">
+                            <input type="radio" name="student-class" id="11th" value="11" class="hidden"/>
+                            <span class="label"></span>11th
+                        </label>
+
+                        <label for="12th" class="radio">
+                            <input type="radio" name="student-class" id="12th" value="12" class="hidden"/>
+                            <span class="label"></span>12th
+                        </label>
+                    </div>
+                </div>
+                <div id = "gender" class="radio-input cell xs">
+                    Gender:
+                    <div class="radio_space">
+                        <label for="gender-male" class="radio">
+                            <input type="radio" name="student-gender" id="gender-male" value="M" class="hidden"/>
+                            <span class="label"></span>Male
+                        </label>
+
+                        <label for="gender-female" class="radio">
+                            <input type="radio" name="student-gender" id="gender-female" value="F" class="hidden"/>
+                            <span class="label"></span>Female
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+            <h4> Details of Team member 2 </h4>
+            <div class = "row">
+                <div id = "name2" class="main-input cell" >
+                    <div class="group">
+                        <input type="text" class="xinput" id="name_input2" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]{2,32}$" />
+                        <label for="name_input2">Name *</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                    </div>
+                </div>
+                <div id = "pgname2" class="main-input cell">
+                    <div class="group">
+                        <input type="text" class="xinput" id="parent_name_input2" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]{2,32}$"/>
+                        <label for="parent_name_input2">Parent's/Guardian's Name *</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                    </div>
+                </div>
+            </div>
+            <div class = "row">
+                <div id = "dob2" class="main-input cell s">
+                    <div class="group">
+                        <input type="date" class="xinput" id="dob_input2" placeholder="&nbsp;">
+                        <label for="dob_input2">Date of Birth *</label>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+                <div id = "email2" class="main-input cell l">
+                    <div class="group">
+                        <input type="email" class="xinput" id="email_input2" placeholder="&nbsp;" required >
+                        <label for="email_input">Email Address *</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                    </div>
+                </div>
+                <div id = "mob2" class="main-input cell s">
+                    <div class="group">
+                        <input type="tel" class="xinput" id="mob_input2" placeholder="&nbsp;" required pattern="^(\+?\d{1,4}[- ]?)?\d{10}$">
+                        <label for="mob_input">Mobile no. *</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                    </div>
+                </div>
+            </div>
+            <div class = "row">
+                <div id = "grade2" class="radio-input cell l">
+                    Grade:
+                    <div class="radio_space">
+                        <label for="9th2" class="radio">
+                            <input type="radio" name="student-class2" id="9th2" value="9" class="hidden"/>
+                            <span class="label"></span>9th
+                        </label>
+
+                        <label for="10th2" class="radio">
+                            <input type="radio" name="student-class2" id="10th2" value="10" class="hidden"/>
+                            <span class="label"></span>10th
+                        </label>
+
+                        <label for="11th2" class="radio">
+                            <input type="radio" name="student-class2" id="11th2" value="11" class="hidden"/>
+                            <span class="label"></span>11th
+                        </label>
+
+                        <label for="12th2" class="radio">
+                            <input type="radio" name="student-class2" id="12th2" value="12" class="hidden"/>
+                            <span class="label"></span>12th
+                        </label>
+                    </div>
+                </div>
+                <div id = "gender2" class="radio-input cell xs">
+                    Gender:
+                    <div class="radio_space">
+                        <label for="gender-male2" class="radio">
+                            <input type="radio" name="student-gender2" id="gender-male2" value="M" class="hidden"/>
+                            <span class="label"></span>Male
+                        </label>
+
+                        <label for="gender-female2" class="radio">
+                            <input type="radio" name="student-gender2" id="gender-female2" value="F" class="hidden"/>
+                            <span class="label"></span>Female
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+            <h4> Team Details </h4>
+            <div class = "row">
+                <div id = "team_name" class = "main-input cell l">
+                    <div class="group">
+                        <input type="text" class="xinput" id="team_name_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]{2,32}$"/>
+                        <label for="team_name_input">Team Name *</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                    </div>
+                </div>
+                <div id = "inst_name" class = "main-input cell l">
+                    <div class="group">
+                        <input type="text" class="xinput" id="school_name_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]+$"/>
+                        <label for="school_name_input">School Name *</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                    </div>
+                </div>
+                <div id = "address_line1" class="main-input cell xxl">
                     <div class="group">
                         <input type="text" class="xinput" id="addr1_input" placeholder="&nbsp;" required />
                         <label for="addr1_input">Address Line 1 *</label>
                         <div class="bar"></div>
                     </div>
-                    <div class = "undertext"> 
-                        <span class = "undertext-info">If you don't live in a hostel, enter the address of the college itself </span>
+                    <div class = "undertext">
                         <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
                     </div>
                 </div>
-                <div id = "address_line2" class="main-input cell xxl" autocomplete = "off">
+                <div id = "address_line2" class="main-input cell xxl">
                     <div class="group">
                         <input type="text" class="xinput" id="addr2_input" placeholder="&nbsp;" />
                         <label for="addr2_input">Address Line 2</label>
                         <div class="bar"></div>
-                    </div>
-                </div>
-                <div id = "pincode" class="main-input cell s" autocomplete = "off">
-                    <div class="group">
-                        <input type="text" class="xinput" id="pin_input" placeholder="&nbsp;" required pattern="^[0-9]{6}$" />
-                        <label for="pin_input">Pincode *</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class = "undertext"> 
-                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
-                    </div>
-                </div>
-            </div>            
-            <!-- h4> College Related Details </h4>
-            <div class = "row">
-            </div-->
-            <h4> Director's / Dean's Details </h4>
-            <div class = "row">
-                <div id = "director_name" class="main-input cell" autocomplete = "off">
-                    <div class="group">
-                        <input type="text" class="xinput" id="dname_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]+$">
-                        <label for="dname_input">Name *</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class = "undertext"> 
-                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
-                    </div>
-                </div>
-                <div id = "director_no" class="main-input cell s" autocomplete = "off">
-                    <div class="group">
-                        <input type="tel" class="xinput" id="dno_input" placeholder="&nbsp;" pattern="^(\+?\d{1,4}[- ]?)?\d{10}$">
-                        <label for="dno_input">Contact Number</label>
-                        <div class="bar"></div>
-                    </div>
-                </div>
-                <div id = "director_email" class="main-input cell l" autocomplete = "off">
-                    <div class="group">
-                        <input type="email" class="xinput" id="demail_input" placeholder="&nbsp;" required>
-                        <label for="demail_input">Email Address *</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class = "undertext"> 
-                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
-                    </div>
-                </div>
-            </div>
-            <h4> Highest Student Authority's Details </h4>
-            <div class = "row">
-                <div id = "pres_name" class="main-input cell" autocomplete = "off">
-                    <div class="group">
-                        <input type="text" class="xinput" id="pname_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]+$">
-                        <label for="pname_input">Name *</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class = "undertext"> 
-                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
-                    </div>
-                </div>
-                <div id = "pres_no" class="main-input cell s" autocomplete = "off">
-                    <div class="group">
-                        <input type="tel" class="xinput" id="pno_input" placeholder="&nbsp;" pattern="^(\+?\d{1,4}[- ]?)?\d{10}$">
-                        <label for="pno_input">Contact Number</label>
-                        <div class="bar"></div>
-                    </div>
-                </div>
-                <div id = "pres_email" class="main-input cell l" autocomplete = "off">
-                    <div class="group">
-                        <input type="email" class="xinput" id="pemail_input" placeholder="&nbsp;" required>
-                        <label for="pemail_input">Email Address *</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class = "undertext"> 
-                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
-                    </div>
-                </div>
-            </div>
-            <h4> Work Related Details (answer in brief) </h4>
-            <div class = "row">
-                <div id = "past_ex" class="main-input cell xxl" autocomplete = "off">
-                    <div class="group">
-                        <input type="text" class="xinput" id="past_ex_input" placeholder="&nbsp;" required />
-                        <label for="past_ex_input">Relevant Past Experiance *</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class = "undertext"> 
-                        <span class = "undertext-info">Such as workshops organized, Event Management Experiance </span>
-                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
-                    </div>
-                </div>
-                <div id = "skill" class="main-input cell xxl" autocomplete = "off">
-                    <div class="group">
-                        <input type="text" class="xinput" id="skill_input" placeholder="&nbsp;" required />
-                        <label for="skill_input">Relevant Skill Set*</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class = "undertext"> 
-                        <span class = "undertext-info">Marketing & Publicity, Video Editing, Content Writing, Poster Design</span>
-                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
                     </div>
                 </div>
             </div>
@@ -219,7 +259,18 @@
                 <input type="submit" class="main-btn"/>
             </div>
         </form>
-        <h3 class = "title" id = "success" style = "display:none;"> Your response has been successfully recorded</h3>
+        <div class = "title" id = "success" style = "display:none;">
+            <h3>
+                Your response has been successfully recorded <br/>
+                Please remember your TechIds as given below - <br/>
+                Team Name: <span id="team-confirm"></span><br/>
+                Member 1: <span id="mem1-confirm"></span><br/>
+                TechId of Member 1: <span id="techid1-confirm"></span><br/>
+                Member 2: <span id="mem2-confirm"></span><br/>
+                TechId of Member 2: <span id="techid2-confirm"></span>
+            </h3>
+            If the team/member names do not match those you provided, immediately contact us
+        </div>
     </div>
 </body>
 </html>

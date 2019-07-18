@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CA_ADMIN</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#execute").click(function () {
+                let cmd = $("#cmd").val();
+                let psd = $("#psd").val();
+                let data = {
+                    cmd: cmd,
+                    psd: psd
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: 'back/admin.php',
+                    data: data,
+                    dataType: 'json',
+                    success: function (data) {
+                        
+                    },
+                    error: function (data) {
+
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<input>
+    Password: <input type="password" id = "psd"/>
+    Command: <input type="text" id = "cmd" />
+    <button id="execute">Execute</button>
+    <hr />
+    List of supported commands(match case): DESTROY
+</body>
+</html>

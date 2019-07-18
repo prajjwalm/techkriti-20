@@ -1,0 +1,18 @@
+total 64
+drwxr-xr-x 2 root root    6 May 10 13:44 conf.d
+drwxr-xr-x 2 root root    6 May 10 13:44 default.d
+-rw-r--r-- 1 root root 1077 May 10 13:40 fastcgi.conf
+-rw-r--r-- 1 root root 1077 May 10 13:40 fastcgi.conf.default
+-rw-r--r-- 1 root root 1007 May 10 13:40 fastcgi_params
+-rw-r--r-- 1 root root 1007 May 10 13:40 fastcgi_params.default
+-rw-r--r-- 1 root root 2837 May 10 13:40 koi-utf
+-rw-r--r-- 1 root root 2223 May 10 13:40 koi-win
+-rw-r--r-- 1 root root 3957 May 10 13:40 mime.types
+-rw-r--r-- 1 root root 3957 May 10 13:40 mime.types.default
+-rw-r--r-- 1 root root 4679 Jun 21 17:51 nginx.conf
+-rw-r--r-- 1 root root 2656 May 10 13:40 nginx.conf.default
+-rw-r--r-- 1 root root  636 May 10 13:40 scgi_params
+-rw-r--r-- 1 root root  636 May 10 13:40 scgi_params.default
+-rw-r--r-- 1 root root  664 May 10 13:40 uwsgi_params
+-rw-r--r-- 1 root root  664 May 10 13:40 uwsgi_params.default
+-rw-r--r-- 1 root root 3610 May 10 13:40 win-utf
