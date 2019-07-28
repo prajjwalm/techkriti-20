@@ -352,12 +352,6 @@ h5 {
   .main-input.xxl {
     width: 256px;
   }
-
-  .register {
-    min-width: 256px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
 }
 .lds-ellipsis {
   display: inline-block;

@@ -28,8 +28,6 @@ $mxlarge-width: 256px;
 $xl-text-height: 54px;
 $text-height: 24px;
 
-$fb-button-height: 40px;
-
 $default-shadow1: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
 $default-shadow2: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 $default-shadow: $default-shadow1, $default-shadow2;
@@ -174,7 +172,7 @@ body {
 }
 
 .main-input input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #f7f7f7 inset;
+  -webkit-box-shadow: 0 0 0 1000px #f7f7f7 inset;
   -webkit-text-fill-color: #103880 !important;
 }
 
@@ -227,7 +225,7 @@ body {
 
 .main-input .undertext {
   position: relative;
-  bottom: 0px;
+  bottom: 0;
   left: 8px;
   min-height: 18px;
   font-size: 14px;
@@ -251,7 +249,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, h2, h3 {
-  margin-top: 0px;
+  margin-top: 0;
   margin-bottom: 48px;
 }
 
@@ -330,33 +328,45 @@ h5 {
 #success {
   text-transform: unset;
   text-align: unset;
-  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.4rem;
+  font-weight: bold;
+  font-family: "Varela Round", sans-serif;
+
+  .monos {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+
+  span {
+    font-weight: 400;
+  }
+  .subtle {
+    font-style: italic;
+    font-size: 14px;
+
+    a {
+      text-decoration: none;
+      color: $color-primary-dark;
+    }
+  }
+  .confirm {
+    text-align: right;
+  }
+}
+
+#success-intro {
+  font-size: 18px;
+  margin-bottom: 24px;
+  text-align: justify;
 }
 
 .title:after {
   content: "";
   display: block;
   height: 4px;
-  width: $fb-button-height;
+  width: 40px;
   background-color: $color-primary;
-  margin-top: 20px;
-  margin: 20px auto 0px;
-}
-
-#fbspace {
-  font-family: 'Montserrat', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#fbbutton {
-  margin-top: 6px;
-  background-color: $color-fb;
-  display: inline-block;
-  max-height: $fb-button-height;
-  overflow: hidden;
-  border-radius: 6px;
+  margin: 20px auto 0;
 }
 
 #main-form {
@@ -397,69 +407,3 @@ h5 {
     width: $mxlarge-width;
   }
 }
-
-// fb button loader animation
-.lds-ellipsis {
-  display: inline-block;
-  position: relative;
-  width: 64px;
-  height: $fb-button-height;
-}
-
-.lds-ellipsis div {
-  position: absolute;
-  top: $fb-button-height/2 - 4px;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #fff;
-  animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-
-.lds-ellipsis div:nth-child(1) {
-  left: 6px;
-  animation: lds-ellipsis1 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(2) {
-  left: 6px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(3) {
-  left: 26px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(4) {
-  left: 45px;
-  animation: lds-ellipsis3 0.6s infinite;
-}
-
-@keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(19px, 0);
-  }
-}
-  

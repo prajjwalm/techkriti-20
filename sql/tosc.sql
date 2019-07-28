@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2019 at 02:00 PM
+-- Generation Time: Jul 22, 2019 at 09:34 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -30,16 +30,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tosc` (
   `name` varchar(255) NOT NULL,
-  `techid` varchar(16) NOT NULL,
+  `team` varchar(15) NOT NULL,
+  `techid` mediumint(9) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `psd_hash` varchar(255) NOT NULL,
   `parent` varchar(255) NOT NULL,
   `dob` date NOT NULL,
   `mob` varchar(31) NOT NULL,
   `male` tinyint(1) NOT NULL,
   `grade` tinyint(3) UNSIGNED NOT NULL,
   `school` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
   `school_addr` varchar(255) NOT NULL,
-  `paid` tinyint(1) NOT NULL
+  `paid` tinyint(1) NOT NULL,
+  `txnid` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -54,6 +58,16 @@ ALTER TABLE `tosc`
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `techid` (`techid`),
   ADD KEY `techid_2` (`techid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tosc`
+--
+ALTER TABLE `tosc`
+  MODIFY `techid` mediumint(9) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

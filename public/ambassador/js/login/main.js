@@ -72,7 +72,7 @@ $(function () {
 
                                     // send ajax request to server
                                     if (all_finputs_ok) {
-                                        alert("sending ajax");
+                                        // alert("sending ajax");
                                         console.log(userid);
                                         console.log(username);
                                         // console.log(useremail);

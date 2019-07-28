@@ -179,30 +179,6 @@ ul, ol {
 }
 
 /* --  Input  -- */
-input[type=text], input[type=email], input[type=password], input[type=number], input[type=date], input[type=url], input[type=tel], textarea {
-  height: 40px;
-  width: 100%;
-  border: none;
-  background: #F4F4F4;
-  border-bottom: 2px solid #EEE;
-  color: #354052;
-  padding: 0px 10px;
-  opacity: 0.5;
-  -webkit-transition: 0.2s border-color, 0.2s opacity;
-  transition: 0.2s border-color, 0.2s opacity;
-}
-
-textarea {
-  padding: 10px 10px;
-  min-height: 80px;
-  resize: vertical;
-}
-
-input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, input[type=number]:focus, input[type=date]:focus, input[type=url]:focus, input[type=tel]:focus, textarea:focus {
-  border-color: #6195FF;
-  opacity: 1;
-}
-
 /* --  Buttons  -- */
 .main-btn, .white-btn, .outline-btn {
   display: block;
@@ -287,7 +263,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, inp
   background: #FFF;
   -webkit-transition: 0.2s padding;
   transition: 0.2s padding;
-  z-index: 999;
+  z-index: 30;
 }
 
 #nav.navbar {
@@ -439,7 +415,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, inp
   width: 40px;
   height: 40px;
   cursor: pointer;
-  z-index: 99999;
+  z-index: 50;
 }
 
 .nav-collapse span {
@@ -553,8 +529,8 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, inp
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   /* Styles, not important */
 }
 #tologin .btn {
@@ -566,12 +542,12 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, inp
   outline: none;
   border-radius: 2px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  background-color: #2ecc71;
+  background-color: #6195FF;
   color: #ecf0f1;
   transition: background-color 0.3s;
 }
 #tologin .btn:hover, #tologin .btn:focus {
-  background-color: #27ae60;
+  background-color: #1251ce;
 }
 #tologin .btn > * {
   position: relative;
@@ -607,17 +583,9 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, inp
 #tologin *, #tologin *:before, #tologin *:after {
   box-sizing: border-box;
 }
-#tologin .btn.orange {
-  background-color: #e67e22;
-}
-#tologin .btn.orange:hover, #tologin .btn.orange:focus {
-  background-color: #d35400;
-}
-#tologin .btn.red {
-  background-color: #e74c3c;
-}
-#tologin .btn.red:hover, #tologin .btn.red:focus {
-  background-color: #c0392b;
+
+#tologin > * {
+  margin: 4px;
 }
 
 .fixed-nav #tologin {
@@ -999,6 +967,312 @@ header {
 }
 
 /*------------------------------------*\
+	Team
+\*------------------------------------*/
+.team {
+  position: relative;
+  background-color: #F4F4F4;
+  padding: 40px 20px;
+  margin: 15px 0;
+  min-width: 256px;
+  width: 20vw;
+  min-height: 360px;
+  height: 28vw;
+}
+
+.team::after {
+  content: "";
+  background-color: #1C1D21;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0;
+  z-index: 1;
+  -webkit-transition: 0.2s height;
+  transition: 0.2s height;
+}
+
+.team:hover:after {
+  height: 100%;
+}
+
+.team-img {
+  position: relative;
+  margin-bottom: 20px;
+  z-index: 6;
+}
+
+.team-img > img {
+  width: 100%;
+}
+
+.team .overlay {
+  background: #1C1D21;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  -webkit-transition: 0.2s opacity;
+  transition: 0.2s opacity;
+}
+
+.team:hover .overlay {
+  opacity: 0.8;
+}
+
+.team .team-content {
+  text-align: center;
+  position: relative;
+  z-index: 6;
+}
+
+.team .team-content h3 {
+  margin-bottom: 10px;
+  -webkit-transition: 0.2s color;
+  transition: 0.2s color;
+}
+
+.team .team-content span {
+  font-size: 14px;
+  text-transform: uppercase;
+  -webkit-transition: 0.2s color;
+  transition: 0.2s color;
+}
+
+.team:hover .team-content h3 {
+  color: #FFF;
+}
+
+.team:hover .team-content span {
+  color: #6195FF;
+}
+
+.team .team-social {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-transition: 0.2s opacity;
+  transition: 0.2s opacity;
+}
+
+.team .team-social a {
+  display: block;
+  line-height: 50px;
+  width: 50px;
+  text-align: center;
+  background-color: #6195FF;
+  color: #FFF;
+}
+
+.team:hover .team-social {
+  opacity: 1;
+}
+
+#modal-shadow {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 31;
+  background-color: rgba(77, 103, 145, 0.25);
+}
+#modal-shadow #modal-login {
+  position: fixed;
+  min-width: 256px;
+  min-height: 280px;
+  width: 36vw;
+  height: 60vh;
+  top: 50vh;
+  left: 50vw;
+  z-index: 32;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 32px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /* Stylized Text Input */
+}
+#modal-shadow #modal-login .row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-left: -12px;
+}
+#modal-shadow #modal-login .cell {
+  margin: 4px 12px;
+  flex-grow: 1;
+}
+#modal-shadow #modal-login .main-input {
+  display: block;
+  width: 200px;
+  min-height: 64px;
+}
+#modal-shadow #modal-login .main-input .group {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+#modal-shadow #modal-login .main-input label {
+  position: absolute;
+  top: 15px;
+  color: rgba(53, 64, 82, 0.75);
+  font: 400 15px "Varela Round";
+  cursor: text;
+  transition: 0.25s ease;
+}
+#modal-shadow #modal-login .main-input input {
+  display: block;
+  background: transparent;
+  width: 100%;
+  padding-top: 15px;
+  border: none;
+  border-radius: 0;
+  color: #354052;
+  font-size: 13px;
+  font-family: "Varela Round";
+  transition: 0.3s ease;
+}
+@supports not (-ms-ime-align: auto) {
+  #modal-shadow #modal-login .main-input input:valid:not(:placeholder-shown) ~ label {
+    top: 0;
+    font: 700 9px "Varela Round";
+    color: rgba(53, 64, 82, 0.75);
+  }
+  #modal-shadow #modal-login .main-input input:invalid:not(:placeholder-shown):not(:focus) ~ label {
+    top: 0;
+    font: 700 9px "Varela Round";
+    color: #f00;
+  }
+}
+@supports (-ms-ime-align: auto) {
+  #modal-shadow #modal-login .main-input input:valid ~ label {
+    display: none;
+  }
+  #modal-shadow #modal-login .main-input input:invalid:not(:focus) ~ label {
+    top: 0;
+    font: 700 9px "Varela Round";
+    color: rgba(53, 64, 82, 0.75);
+  }
+}
+#modal-shadow #modal-login .main-input input.fb-filled ~ label {
+  top: 0 !important;
+  font: 700 9px "Varela Round" !important;
+  color: rgba(53, 64, 82, 0.75) !important;
+}
+#modal-shadow #modal-login .main-input input:focus {
+  outline: none;
+}
+#modal-shadow #modal-login .main-input input:focus ~ label {
+  top: 0;
+  font: 700 9px "Varela Round";
+  color: #6195FF !important;
+}
+#modal-shadow #modal-login .main-input input:focus ~ .bar:before {
+  transform: translateX(0);
+}
+#modal-shadow #modal-login .main-input input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #f7f7f7 inset;
+  -webkit-text-fill-color: #103880 !important;
+}
+#modal-shadow #modal-login .main-input .bar {
+  background: rgba(53, 64, 82, 0.75);
+  content: "";
+  width: 100%;
+  height: 3px;
+  border-radius: 1px;
+  transition: 0.3s ease;
+  position: relative;
+}
+#modal-shadow #modal-login .main-input .bar:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 150%;
+  background: #6195FF;
+  transform: translateX(-100%);
+}
+#modal-shadow #modal-login .main-input ::selection {
+  background: rgba(97, 149, 255, 0.3);
+}
+#modal-shadow #modal-login .main-input.xs {
+  width: 100px;
+}
+#modal-shadow #modal-login .main-input.s {
+  width: 140px;
+}
+#modal-shadow #modal-login .main-input.m {
+  width: 200px;
+}
+#modal-shadow #modal-login .main-input.l {
+  width: 320px;
+}
+#modal-shadow #modal-login .main-input.xl {
+  width: 400px;
+}
+#modal-shadow #modal-login .main-input.xxl {
+  width: 37.8vw;
+}
+#modal-shadow #modal-login .main-input .undertext {
+  position: relative;
+  bottom: 0;
+  left: 8px;
+  min-height: 18px;
+  font-size: 14px;
+  font-family: "Varela Round", sans-serif;
+}
+#modal-shadow #modal-login .main-input .undertext .undertext-info {
+  color: rgba(53, 64, 82, 0.7);
+}
+#modal-shadow #modal-login .main-input .undertext .undertext-error {
+  color: #f00;
+}
+#modal-shadow #modal-login .btn-space {
+  width: 100%;
+  margin: 8px;
+  padding: 16px;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#modal-shadow #modal-login .main-btn, #modal-shadow #modal-login .white-btn, #modal-shadow #modal-login .outline-btn {
+  display: block;
+  padding: 10px 35px;
+  margin: 3px;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  -webkit-transition: 0.2s opacity;
+  transition: 0.2s opacity;
+  font-family: "Varela Round", sans-serif;
+  font-size: 17.6px;
+}
+#modal-shadow #modal-login .main-btn {
+  background: #1251ce;
+  color: #FFF;
+}
+#modal-shadow #modal-login .white-btn {
+  background: #FFF;
+  color: #10161A !important;
+}
+#modal-shadow #modal-login .outline-btn {
+  background: transparent;
+  color: #1251ce !important;
+  border-color: #1251ce;
+}
+#modal-shadow #modal-login .main-btn:hover, #modal-shadow #modal-login .white-btn:hover, #modal-shadow #modal-login .outline-btn:hover {
+  opacity: 0.8;
+}
+
+/*------------------------------------*\
 	Responsive
 \*------------------------------------*/
 @media only screen and (max-width: 1200px) {
@@ -1011,7 +1285,7 @@ header {
   }
 
   .main-nav li {
-    padding: 0px 12px;
+    padding: 0 12px;
   }
 }
 @media only screen and (max-width: 1200px) {
@@ -1034,7 +1308,7 @@ header {
 /* -- mobile nav -- */
 @media only screen and (max-width: 767px) {
   #nav {
-    padding: 0px 0px;
+    padding: 0 0;
   }
 
   #nav.nav-transparent {
@@ -1221,6 +1495,10 @@ header {
   #tologin .btn span {
     padding: 6px 12px;
   }
+
+  #modal-login {
+    padding: 16px !important;
+  }
 }
 /*------------------------------------*\
 	Owl theme
@@ -1297,7 +1575,7 @@ header {
   background: #6195FF;
   border-radius: 3px;
   color: #FFF;
-  z-index: 9999;
+  z-index: 40;
   -webkit-transition: 0.2s opacity;
   transition: 0.2s opacity;
   cursor: pointer;
@@ -1317,7 +1595,7 @@ header {
   bottom: 0;
   right: 0;
   background-color: #FFF;
-  z-index: 99999;
+  z-index: 50;
 }
 
 .preloader {

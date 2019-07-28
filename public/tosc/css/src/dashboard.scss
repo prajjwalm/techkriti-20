@@ -1,0 +1,314 @@
+$color-body: #666F7B;
+$color-headers: #10161A;
+$color-primary: #6195FF;
+$theme-color: #103d87;
+$color-primary-dark: #1251ce;
+$color-ondark: #FCFCFF;
+$color-bgdark: #1C1D21;
+$color-grey1: #EEE;
+$color-grey2: #F4F4F4;
+$color-grey3: #FAFAFA;
+$color-white: #FFF;
+$color-input: #354052;
+
+$default-shadow1: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+$default-shadow2: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+$default-shadow: $default-shadow1, $default-shadow2;
+$material-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+$material-shadow-focus: 0 0.6px 2.5px rgba(0, 0, 0, .75);
+
+@font-face {
+  font-family: 'Varela Round';
+  src: url('../../assets/fonts/VarelaRound-Regular.ttf');
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url('../../assets/fonts/Montserrat/Montserrat-Regular.ttf');
+}
+
+$sidenav-row-ht: 28px;
+$mcard-width: 280px;
+$mcard-height: 400px;
+$mcard-img-height: 210px;
+$fab-diameter: 36px;
+
+h1 { font-size: 54px; }
+h2 { font-size: 36px; }
+h3 { font-size: 28px; }
+h4 { font-size: 18px; }
+h5 { font-size: 16px; }
+
+body {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#card-space {
+  display: flex;
+  width: $mcard-width;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: space-evenly;
+  align-items: start;
+  transition: all 0.3s;
+}
+
+#card-space > * {
+  margin: 12px;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s;
+}
+
+#sidenav {
+  background-color: #1e365e;
+  color: $color-ondark;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: "Varela Round", sans-serif;
+  min-width: 320px;
+  min-height: calc(100vh - 24px);
+  border-radius: 6px;
+  flex-grow: 0;
+  margin: 12px;
+
+  .header {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+  }
+
+  .row {
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px;
+    padding: 16px;
+    height: $sidenav-row-ht;
+    border-radius: $sidenav-row-ht / 2;
+    background-color: rgba($color-grey1, 0);
+    transition: all 0.3s;
+
+    .icon {
+      width: $sidenav-row-ht;
+
+      i {
+        font-size: 20px;
+      }
+    }
+
+    .desc {
+      margin-left: 24px;
+      font-size: 16px;
+      flex-grow: 1;
+      text-transform: capitalize;
+    }
+
+  }
+
+  .row.selected {
+    background-color: rgba($color-grey1, 0.15) !important;
+  }
+
+  .row:hover {
+    background-color: rgba($color-grey1, 0.1);
+  }
+
+  transition: all 0.3s;
+}
+
+#sidenav.closed {
+  width: 80px;
+}
+
+.card-m {
+  width: $mcard-width;
+  height: $mcard-height;
+  box-shadow: $default-shadow;
+  text-align: justify;
+  display: none;
+
+  .img-space {
+    width: 100%;
+    height: $mcard-img-height;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .floating-action-button {
+    background-color: $color-primary;
+    color: $color-ondark;
+    font-weight: bold;
+    font-size: 16px;
+    width: $fab-diameter;
+    height: $fab-diameter;
+    line-height: $fab-diameter;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    top: $mcard-img-height - $fab-diameter / 2;
+    right: $fab-diameter / 2;
+    box-shadow: $material-shadow;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: $material-shadow-focus;
+      }
+
+      &:focus {
+        box-shadow: unset;
+      }
+  }
+
+
+  .card-title {
+    width: 100%;
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 12px 8px;
+    font-family: Montserrat, sans-serif;
+  }
+
+  .card-description {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 14px;
+  }
+
+  .btn {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: block;
+    padding: 0;
+    overflow: hidden !important;
+    font-family: Montserrat, sans-serif;
+    width: 180px;
+
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+
+    background-color: $color-primary-dark;
+    color: #ecf0f1;
+
+    transition: background-color .3s;
+  }
+
+  .btn:hover{
+    cursor: pointer;
+  }
+
+  .btn > * {
+    position: relative;
+  }
+
+  .btn span {
+    display: block;
+    padding: 8px 12px;
+  }
+
+  .btn:before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+    width: 0;
+    padding-top: 0;
+
+    border-radius: 100%;
+
+    background-color: rgba(236, 240, 241, .3);
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .btn:active:before {
+    width: 120%;
+    padding-top: 120%;
+
+    transition: width .2s ease-out, padding-top .2s ease-out;
+  }
+
+  .btn:disabled {
+    background-color: #aaa !important;
+  }
+
+  /* Styles, not important */
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 991px) {
+
+  h1 { font-size: 48px; }
+  h2 { font-size: 32px; }
+  h3 { font-size: 24px; }
+  h4 { font-size: 16px; }
+  h5 { font-size: 14px; }
+
+  #sidenav {
+    min-width: 240px;
+    .row {
+      padding: 12px 8px;
+
+      .icon {
+        width: 28px;
+
+        i {
+          font-size: 18px;
+        }
+      }
+
+      .desc {
+        margin-left: 12px;
+        font-size: 14px ;
+      }
+    }
+  }
+}
+
+.card-m.long {
+  height: 600px;
+}
+
+@media (max-width: 536px) {
+  #sidenav {
+    width: 100%;
+    min-height: unset;
+  }
+
+  .card-m {
+    width: 100%;
+  }
+}

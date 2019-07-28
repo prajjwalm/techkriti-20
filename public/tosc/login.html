@@ -1,14 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE html>`
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name = "viewport" content = "width=device-width, initial-scale=1">
-	<meta name = "keywords" content = "Techkriti, Register, Registration, Campus Ambassador, CA, Application, Form">
-	<meta name = "Description" content = "Registerion portal for registering as a Campus Ambassador for Techkriti">
+    <meta name = "keywords" content = "Techkriti, Techkriti 20, TOSC, Open, School, Competition, Championship, Register,
+     Form, Portal, 2019, TOSC 19, 19">
+	<meta name = "Description" content = "Registration portal for Techkriti Open School Championship 2020">
 	<meta name = "theme-color" content = "#103d87">
 
-	<title>Techkriti'20 CA Register</title>
+	<title>TOSC'19 Register</title>
     
 	<link href="assets/icons/fa/css/all.min.css" rel="stylesheet">
     <link href="css/build/login.css" rel="stylesheet">
@@ -28,36 +29,41 @@
     </div>
     <div class = "register" id = "form-box">
         <h2 class = "title"> Registration Form</h2>
-        <form id = "main-form" novalidate>
+        <form id = "main-form" novalidate >
             <h4> Details of Team member 1 </h4>
             <div class = "row">
                 <div id = "name" class="main-input cell" >
                     <div class="group">
-                        <input type="text" class="xinput" id="name_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]{2,32}$" />
+                        <input type="text" class="xinput" id="name_input" placeholder="&nbsp;" required pattern="^[a-zA-Z\x20]{2,32}$" />
                         <label for="name_input">Name *</label>
                         <div class="bar"></div>
                     </div>
                     <div class = "undertext"> 
                         <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                        <span class = "undertext-info">Do not use titles</span>
                     </div>
                 </div>
                 <div id = "pgname" class="main-input cell">
                     <div class="group">
-                        <input type="text" class="xinput" id="parent_name_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]{2,32}$"/>
+                        <input type="text" class="xinput" id="parent_name_input" placeholder="&nbsp;" required pattern="[a-zA-Z\x20]{2,32}$"/>
                         <label for="parent_name_input">Parent's/Guardian's Name *</label>
                         <div class="bar"></div>
                     </div>
                     <div class = "undertext"> 
                         <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                        <span class = "undertext-info">Do not use titles</span>
                     </div>
                 </div>
             </div>
             <div class = "row">
                 <div id = "dob" class="main-input cell s">
                     <div class="group">
-                        <input type="date" class="xinput" id="dob_input" placeholder="&nbsp;">
+                        <input type="date" class="xinput" id="dob_input" placeholder="&nbsp;" min="01-01-1996" max="31-12-2010">
                         <label for="dob_input">Date of Birth *</label>
                         <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
                     </div>
                 </div>
                 <div id = "email" class="main-input cell l">
@@ -126,31 +132,36 @@
             <div class = "row">
                 <div id = "name2" class="main-input cell" >
                     <div class="group">
-                        <input type="text" class="xinput" id="name_input2" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]{2,32}$" />
+                        <input type="text" class="xinput" id="name_input2" placeholder="&nbsp;" required pattern="[a-zA-Z\x20]{2,32}$" />
                         <label for="name_input2">Name *</label>
                         <div class="bar"></div>
                     </div>
                     <div class = "undertext">
                         <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                        <span class = "undertext-info">Do not use titles</span>
                     </div>
                 </div>
                 <div id = "pgname2" class="main-input cell">
                     <div class="group">
-                        <input type="text" class="xinput" id="parent_name_input2" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]{2,32}$"/>
+                        <input type="text" class="xinput" id="parent_name_input2" placeholder="&nbsp;" required pattern="[a-zA-Z\x20]{2,32}$"/>
                         <label for="parent_name_input2">Parent's/Guardian's Name *</label>
                         <div class="bar"></div>
                     </div>
                     <div class = "undertext">
                         <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                        <span class = "undertext-info">Do not use titles</span>
                     </div>
                 </div>
             </div>
             <div class = "row">
                 <div id = "dob2" class="main-input cell s">
                     <div class="group">
-                        <input type="date" class="xinput" id="dob_input2" placeholder="&nbsp;">
+                        <input type="date" class="xinput" id="dob_input2" placeholder="&nbsp;" min="01-01-1996" max="31-12-2010">
                         <label for="dob_input2">Date of Birth *</label>
                         <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
                     </div>
                 </div>
                 <div id = "email2" class="main-input cell l">
@@ -215,18 +226,8 @@
                     </div>
                 </div>
             </div>
-            <h4> Team Details </h4>
+            <h4> School Details </h4>
             <div class = "row">
-                <div id = "team_name" class = "main-input cell l">
-                    <div class="group">
-                        <input type="text" class="xinput" id="team_name_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]{2,32}$"/>
-                        <label for="team_name_input">Team Name *</label>
-                        <div class="bar"></div>
-                    </div>
-                    <div class = "undertext">
-                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
-                    </div>
-                </div>
                 <div id = "inst_name" class = "main-input cell l">
                     <div class="group">
                         <input type="text" class="xinput" id="school_name_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]+$"/>
@@ -237,21 +238,49 @@
                         <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
                     </div>
                 </div>
-                <div id = "address_line1" class="main-input cell xxl">
+
+                <div id = "exam_city" class = "main-input cell">
                     <div class="group">
-                        <input type="text" class="xinput" id="addr1_input" placeholder="&nbsp;" required />
-                        <label for="addr1_input">Address Line 1 *</label>
+                        <input type="text" class="xinput" id="exam_city_input" placeholder="&nbsp;" required pattern="^[a-zA-Z0-9'\-\.\x20&]+$"/>
+                        <label for="exam_city_input">Examination City</label>
                         <div class="bar"></div>
                     </div>
                     <div class = "undertext">
                         <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
                     </div>
                 </div>
-                <div id = "address_line2" class="main-input cell xxl">
+                <div id = "address_line1" class="main-input cell xxl">
                     <div class="group">
-                        <input type="text" class="xinput" id="addr2_input" placeholder="&nbsp;" />
-                        <label for="addr2_input">Address Line 2</label>
+                        <input type="text" class="xinput" id="addr1_input" placeholder="&nbsp;" required />
+                        <label for="addr1_input">Address</label>
                         <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                    </div>
+                </div>
+            </div>
+            <h4> Password </h4>
+            <div class = "row">
+                <div id = "password" class = "main-input cell">
+                    <div class="group">
+                        <input type="password" class="xinput" id="password_input" placeholder="&nbsp;" minlength="4" required/>
+                        <label for="password_input">Password</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
+                        <span class = "undertext-info"> Minimum of 4 Characters</span>
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
+                    </div>
+                </div>
+                <div id = "password-repeat" class="main-input cell">
+                    <div class="group">
+                        <input type="password" class="xinput" id="password_repeat_input" placeholder="&nbsp;" minlength="4" required />
+                        <label for="password_repeat_input">Re-enter Password</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class = "undertext">
+                        <span class = "undertext-error" style = "display:none;"> Invalid Input </span>
                     </div>
                 </div>
             </div>
@@ -259,17 +288,22 @@
                 <input type="submit" class="main-btn"/>
             </div>
         </form>
-        <div class = "title" id = "success" style = "display:none;">
-            <h3>
-                Your response has been successfully recorded <br/>
-                Please remember your TechIds as given below - <br/>
-                Team Name: <span id="team-confirm"></span><br/>
-                Member 1: <span id="mem1-confirm"></span><br/>
-                TechId of Member 1: <span id="techid1-confirm"></span><br/>
-                Member 2: <span id="mem2-confirm"></span><br/>
-                TechId of Member 2: <span id="techid2-confirm"></span>
-            </h3>
-            If the team/member names do not match those you provided, immediately contact us
+        <div class = "title" id = "success" style = "display: none;">
+            <div id = "success-intro">
+                Your response has been successfully recorded. Please remember your TechIds as given below -
+            </div>
+            <pre class = "monos">
+    Member 1:  <span id="mem1-confirm" class="confirm"></span>
+    TechId 1:  <span id="techid1-confirm" class="confirm"></span>
+    Member 2:  <span id="mem2-confirm" class="confirm"></span>
+    TechId 2:  <span id="techid2-confirm" class="confirm"></span>
+    Exam City: <span id="city-confirm" class="confirm"></span>
+            </pre>
+            <span class = "subtle"> If the member names/city do not match those you provided, immediately
+                <a href="mailto:prajjwal@techkriti.org">contact us</a><br/>
+                You may use the email-id and password you entered here to
+                <a href="index.php">login to the dashboard</a> once the portal opens
+            </span>
         </div>
     </div>
 </body>
