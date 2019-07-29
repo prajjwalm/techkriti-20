@@ -39,8 +39,7 @@ if (mysqli_connect_errno()) {
 // ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../../session'));
 session_start();
 
-$query = "SELECT `name`, `psd_hash`, `team`, `techid`, `parent`, `mob`, `school`, `grade`, `paid`, `txnid` 
-FROM `tosc` WHERE `email` = ?;";
+$query = "SELECT `name`, `psd_hash`, `team`, `techid`, `parent`, `mob`, `school`, `grade`, `paid`, `txnid` FROM `tosc` WHERE `email` = ?;";
 if ($stmt = $mysqli->prepare($query)){
     if (!$stmt->bind_param("s", $email)){
         $return['status'] = "error";
@@ -54,33 +53,6 @@ if ($stmt = $mysqli->prepare($query)){
         $return['msg'] = "execution failed";
         exit(json_encode($return));
     }
-//    $result = $stmt->get_result();
-//    if ($retrieve_row = $result->fetch_array()) {
-//
-//        $hash = $retrieve_row["psd_hash"];
-//        if (!password_verify($password, $hash)) {
-//            $return['status'] = "wrong";
-//            $return['msg'] = "user not registered";
-//            exit(json_encode($return));
-//        }
-//        $_SESSION["name"]   = $retrieve_row["name"];
-//        $_SESSION["team"]   = $retrieve_row["team"];
-//        $_SESSION["techid"] = $retrieve_row["techid"];
-//        $_SESSION["email"]  = $retrieve_row["email"];
-//        $_SESSION["parent"] = $retrieve_row["parent"];
-//        $_SESSION["mob"]    = $retrieve_row["mob"];
-//        $_SESSION["school"] = $retrieve_row["school"];
-//        $_SESSION["grade"]  = $retrieve_row["grade"];
-//        $_SESSION["paid"]   = $retrieve_row["paid"];
-//        $_SESSION["txnid"]  = $retrieve_row["txnid"];
-//        $return['status'] = "success";
-//        exit(json_encode($return));
-//
-//    } else {
-//        $return['status'] = "wrong";
-//        $return['msg'] = "user not registered";
-//        exit(json_encode($return));
-//    }
     $stmt->bind_result($name, $hash, $team, $techid, $parent, $mob, $school, $grade, $paid, $txnid);
 
     if ($stmt->fetch()) {
@@ -92,25 +64,67 @@ if ($stmt = $mysqli->prepare($query)){
             $return['msg'] = "user not registered";
             exit(json_encode($return));
         }
+
         $_SESSION["name"]   = $name;
+        $_SESSION["email"]  = $email;
         $_SESSION["team"]   = $team;
         $_SESSION["techid"] = $techid;
         $_SESSION["parent"] = $parent;
         $_SESSION["mob"]    = $mob;
         $_SESSION["school"] = $school;
         $_SESSION["grade"]  = $grade;
-        $_SESSION["paid"]   = $paid;
         $_SESSION["txnid"]  = $txnid;
-        $return['status'] = "success";
-        exit(json_encode($return));
+        $stmt->close();
 
+        $query2 = "SELECT `name`, `email`, `techid`, `parent`, `mob`, `school`, `grade`, `paid`, `txnid` FROM `tosc` WHERE team = ? AND techid != ?;";
+        if ($stmt2 = $mysqli->prepare($query2)) {
+            if (!$stmt2->bind_param('ss', $team, $techid)) {
+                $return['status'] = "error";
+                error_log("binding params failed 2");
+                $return['msg'] = "binding params failed 2";
+                exit(json_encode($return));
+            }
+
+            if (!$stmt2->execute()) {
+                $return['status'] = "error";
+                error_log("execution failed 2");
+                $return['msg'] = "execution failed 2";
+                exit(json_encode($return));
+            }
+
+            $stmt2->bind_result($name2, $email2, $techid2, $parent2, $mob2, $school2, $grade2, $paid2, $txnid2);
+
+            $_SESSION['mem2'] = false;
+            if ($stmt2->fetch()) {
+                $_SESSION['mem2'] = true;
+                $_SESSION["name2"]   = $name2;
+                $_SESSION['email2']  = $email2;
+                $_SESSION["techid2"] = $techid2;
+                $_SESSION["parent2"] = $parent2;
+                $_SESSION["mob2"]    = $mob2;
+                $_SESSION["school2"] = $school2;
+                $_SESSION["grade2"]  = $grade2;
+                $_SESSION["paid"]    = ($paid || $paid2) ? true: false;
+                $_SESSION["txnid2"]  = $txnid2;
+            } else {
+                $_SESSION['paid'] = $paid ? true: false;
+            }
+
+            $return['status'] = "success";
+            exit(json_encode($return));
+        } else {
+            $return['status'] = "error";
+            error_log("stmt2 preparation error: " . $stmt->error);
+            $return['msg'] = "stmt2 preparation error: " . $stmt->error;
+            exit(json_encode($return));
+        }
     } else {
         $return['status'] = "wrong";
         $return['msg'] = "user not registered";
         exit(json_encode($return));
     }
 
-    } else {
+} else {
     $return['status'] = "error";
     error_log("stmt preparation error: " . $stmt->error);
     $return['msg'] = "stmt preparation error: " . $stmt->error;

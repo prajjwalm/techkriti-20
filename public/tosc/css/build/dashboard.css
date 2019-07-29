@@ -39,6 +39,10 @@ body {
   flex-wrap: wrap;
 }
 
+pre {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
 #card-space {
   display: flex;
   width: 280px;
@@ -46,7 +50,7 @@ body {
   flex-wrap: wrap;
   flex-grow: 1;
   justify-content: space-evenly;
-  align-items: start;
+  align-items: center;
   transition: all 0.3s;
 }
 
@@ -114,24 +118,23 @@ body {
   width: 80px;
 }
 
-.card-m {
+.card-s, .card-m, .card-l {
   width: 280px;
   height: 400px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   text-align: justify;
-  display: none;
   /* Styles, not important */
 }
-.card-m .img-space {
+.card-s .img-space, .card-m .img-space, .card-l .img-space {
   width: 100%;
   height: 210px;
 }
-.card-m .img-space img {
+.card-s .img-space img, .card-m .img-space img, .card-l .img-space img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.card-m .floating-action-button {
+.card-s .floating-action-button, .card-m .floating-action-button, .card-l .floating-action-button {
   background-color: #6195FF;
   color: #FCFCFF;
   font-weight: bold;
@@ -146,14 +149,14 @@ body {
   right: 18px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
-.card-m .floating-action-button:hover {
+.card-s .floating-action-button:hover, .card-m .floating-action-button:hover, .card-l .floating-action-button:hover {
   cursor: pointer;
   box-shadow: 0 0.6px 2.5px rgba(0, 0, 0, 0.75);
 }
-.card-m .floating-action-button:focus {
+.card-s .floating-action-button:focus, .card-m .floating-action-button:focus, .card-l .floating-action-button:focus {
   box-shadow: unset;
 }
-.card-m .card-title {
+.card-s .card-title, .card-m .card-title, .card-l .card-title {
   width: 100%;
   font-size: 18px;
   text-transform: capitalize;
@@ -161,12 +164,12 @@ body {
   padding: 12px 8px;
   font-family: Montserrat, sans-serif;
 }
-.card-m .card-description {
+.card-s .card-description, .card-m .card-description, .card-l .card-description {
   padding-left: 8px;
   padding-right: 8px;
   font-size: 14px;
 }
-.card-m .btn {
+.card-s .btn, .card-m .btn, .card-l .btn {
   position: absolute;
   bottom: 6px;
   left: 50%;
@@ -184,17 +187,17 @@ body {
   color: #ecf0f1;
   transition: background-color 0.3s;
 }
-.card-m .btn:hover {
+.card-s .btn:hover, .card-m .btn:hover, .card-l .btn:hover {
   cursor: pointer;
 }
-.card-m .btn > * {
+.card-s .btn > *, .card-m .btn > *, .card-l .btn > * {
   position: relative;
 }
-.card-m .btn span {
+.card-s .btn span, .card-m .btn span, .card-l .btn span {
   display: block;
   padding: 8px 12px;
 }
-.card-m .btn:before {
+.card-s .btn:before, .card-m .btn:before, .card-l .btn:before {
   content: "";
   position: absolute;
   top: 50%;
@@ -210,19 +213,158 @@ body {
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-.card-m .btn:active:before {
+.card-s .btn:active:before, .card-m .btn:active:before, .card-l .btn:active:before {
   width: 120%;
   padding-top: 120%;
   transition: width 0.2s ease-out, padding-top 0.2s ease-out;
 }
-.card-m .btn:disabled {
+.card-s .btn:disabled, .card-m .btn:disabled, .card-l .btn:disabled {
   background-color: #aaa !important;
 }
-.card-m *, .card-m *:before, .card-m *:after {
+.card-s *, .card-m *, .card-l *, .card-s *:before, .card-m *:before, .card-l *:before, .card-s *:after, .card-m *:after, .card-l *:after {
   box-sizing: border-box;
 }
 
-@media (max-width: 991px) {
+.card-m, .card-l {
+  width: 45%;
+  min-width: 320px;
+  height: 80vh;
+  min-height: 480px;
+  position: relative;
+}
+.card-m .img-space, .card-l .img-space {
+  height: 40%;
+  min-height: 240px;
+}
+.card-m .floating-action-button, .card-l .floating-action-button {
+  width: 54px;
+  height: 54px;
+  line-height: 54px;
+  font-size: 24px;
+  position: relative;
+  top: -27px;
+  left: 80%;
+}
+.card-m .card-title, .card-l .card-title {
+  padding-top: 0;
+}
+
+@media (min-width: 1200px) {
+  .card-l {
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    text-align: justify;
+    margin: 64px !important;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* Styles, not important */
+  }
+  .card-l .img-space {
+    width: 50%;
+    height: 100%;
+  }
+  .card-l .img-space img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .card-l .floating-action-button {
+    background-color: #6195FF;
+    color: #FCFCFF;
+    font-weight: bold;
+    font-size: 24px;
+    width: 54px;
+    height: 54px;
+    line-height: 54px;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    top: unset;
+    right: unset;
+    left: 50%;
+    bottom: 36px;
+    transform: translate(-50%, 0);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  }
+  .card-l .floating-action-button:hover {
+    cursor: pointer;
+    box-shadow: 0 0.6px 2.5px rgba(0, 0, 0, 0.75);
+  }
+  .card-l .floating-action-button:focus {
+    box-shadow: unset;
+  }
+  .card-l .card-title {
+    width: 50%;
+    font-size: 27px;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 12px 8px;
+    font-family: Montserrat, sans-serif;
+  }
+  .card-l .card-description {
+    width: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 14px;
+  }
+  .card-l .btn {
+    position: absolute;
+    bottom: 12px;
+    left: 75%;
+    width: 240px;
+    transform: translate(-50%, 0);
+    display: block;
+    padding: 0;
+    overflow: hidden !important;
+    font-family: Montserrat, sans-serif;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    background-color: #1251ce;
+    color: #ecf0f1;
+    transition: background-color 0.3s;
+  }
+  .card-l .btn:hover {
+    cursor: pointer;
+  }
+  .card-l .btn > * {
+    position: relative;
+  }
+  .card-l .btn span {
+    display: block;
+    padding: 8px 12px;
+  }
+  .card-l .btn:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 0;
+    padding-top: 0;
+    border-radius: 100%;
+    background-color: rgba(236, 240, 241, 0.3);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .card-l .btn:active:before {
+    width: 120%;
+    padding-top: 120%;
+    transition: width 0.2s ease-out, padding-top 0.2s ease-out;
+  }
+  .card-l .btn:disabled {
+    background-color: #aaa !important;
+  }
+  .card-l *, .card-l *:before, .card-l *:after {
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 1080px) {
   h1 {
     font-size: 48px;
   }
@@ -260,19 +402,26 @@ body {
     font-size: 14px;
   }
 }
-.card-m.long {
-  height: 600px;
-}
-
-@media (max-width: 536px) {
+@media (max-width: 636px) {
   #sidenav {
     width: 100%;
     min-height: unset;
   }
 
-  .card-m {
+  .card-s, .card-m, .card-l {
     width: 100%;
   }
+
+  .card-s, .card-l, .card-m {
+    min-width: unset;
+  }
+}
+.card-s.hidden, .card-m.hidden, .card-l.hidden {
+  display: none !important;
+}
+
+.card-s.padded, .card-m.padded, .card-l.padded {
+  padding: 12px !important;
 }
 
 /*# sourceMappingURL=dashboard.css.map */

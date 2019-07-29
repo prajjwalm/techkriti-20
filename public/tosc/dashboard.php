@@ -50,11 +50,10 @@ if (empty($_SESSION['techid'])) {
             <div class = "icon"><i class="fas fa-home"></i></div>
             <span class="desc">Home</span>
         </div -->
-        <!--div class="row" id="member_details">
+        <div class="row" id="member_details">
             <div class="icon"><i class="fas fa-user-friends"></i></div>
             <span class="desc">Member Details</span>
-        </div -->
-
+        </div>
         <div class="row" id="payments">
             <div class="icon"><i class="fas fa-credit-card"></i></div>
             <span class="desc">Payments</span>
@@ -126,7 +125,39 @@ if (empty($_SESSION['techid'])) {
                 <button class="btn" type="button"><span>Action</span></button>
             </div>
         </div -->
-        <div id = "to_payment" class = "card-m c_payments">
+        <div id = "member1" class = "card-s c_member_details hidden padded">
+            <div class="card-title">
+                Your details
+            </div>
+            <div class="card-description">
+                Name:           <?php echo $_SESSION['name'] ?> <br/>
+                Parent Name:    <?php echo $_SESSION['parent']  ?> <br/>
+                Tech Id:        <?php echo $_SESSION['techid']  ?> <br/>
+                School:         <?php echo $_SESSION['school']  ?> <br/>
+                Grade:          <?php echo $_SESSION['grade']  ?> <br/>
+                Pool:           <?php echo intval($_SESSION['grade']) < 11 ? "A"  : "B" ; ?> <br/>
+                Fees Paid:      <?php echo $_SESSION['paid'] ? "yes" : "no" ?> <br/>
+            </div>
+        </div>
+        <div id = "member2" class = "card-s c_member_details hidden padded">
+            <div class="card-title">
+                Your Teammate's details
+            </div>
+            <?php if ($_SESSION['mem2']): ?>
+            <div class="card-description">
+                Name:           <?php echo $_SESSION['name2'] ?> <br/>
+                Parent Name:    <?php echo $_SESSION['parent2']  ?> <br/>
+                Tech Id:        <?php echo $_SESSION['techid2']  ?> <br/>
+                School:         <?php echo $_SESSION['school2']  ?> <br/>
+                Grade:          <?php echo $_SESSION['grade2']  ?> <br/>
+                Pool:           <?php echo intval($_SESSION['grade2']) < 11 ? "A"  : "B" ; ?> <br/>
+                Fees Paid:      <?php echo $_SESSION['paid'] ? "yes" : "no" ?> <br/>
+            </div>
+            <?php else: ?>
+                Couldn't retrieve teammate's details. Please report this problem
+            <?php endif; ?>
+        </div>
+        <div id = "to_payment" class = "card-l c_payments hidden">
             <div class="img-space">
                 <img src="assets/images/payment.jpg" alt="" />
             </div>

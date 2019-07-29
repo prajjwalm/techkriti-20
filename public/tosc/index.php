@@ -90,9 +90,9 @@ session_start();
         <div id="tologin">
             <button class="btn" type="button" onclick="location.href = 'login.html';"><span>Sign up</span></button>
             <?php if (empty($_SESSION['techid'])): ?>
-                <button disabled title="Dashboard will open in a few days" class="btn" type="button" id="to_dashboard"><span>Sign in</span></button>
+                <button  class="btn" type="button" id="to_dashboard"><span>Sign in</span></button>
             <?php else: ?>
-                <button disabled title="Dashboard will open in a few days" class="btn" type="button" onclick="location.href = 'dashboard.php';"><span>Proceed to dashboard</span></button>
+                <button  class="btn" type="button" onclick="location.href = 'dashboard.php';"><span>Proceed to dashboard</span></button>
             <?php endif; ?>
 <!--            <button class="btn" disabled type="button" id="to_dashboard" title="Dashboard will open in a few days"><span>Sign in</span></button>-->
         </div>
