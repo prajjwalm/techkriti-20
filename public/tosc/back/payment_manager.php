@@ -26,8 +26,6 @@ function random_str($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyz')
 $return = [];
 
 // ready session
-
-// ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../../session'));
 session_start();
 if (empty($_SESSION['techid'])) {
     session_destroy();
@@ -44,10 +42,8 @@ if (mysqli_connect_errno()) {
     exit(json_encode($return));
 }
 
-
+// initialise payu data
 $payu_data = [];
-$payu_data['key'] = "gtKFFx";
-$payu_salt = "eCwWELxi";
 
 // generate a unique taxation id
 do {
@@ -66,11 +62,12 @@ do {
     $result->free();
 } while ($present);
 
+$payu_data['key'] = "gtKFFx";
+$payu_salt = "eCwWELxi";
 $payu_data['txnid'] = $proposedTxn;
 $payu_data['amount'] = "300";
 $payu_data['productinfo'] = "registration amount for tosc19";
-//$payu_data['firstname'] = explode(' ', trim($_SESSION['name']))[0];
-$payu_data['firstname'] = $_SESSION['name'];
+$payu_data['firstname'] = $_SESSION['name'];                    // explode(' ', trim($_SESSION['name']))[0];
 $payu_data['email'] = $_SESSION['email'];
 $payu_data['phone'] = $_SESSION['mob'];
 $payu_data['surl'] = "https://tosc.techkriti.org/back/surl.php";
@@ -79,10 +76,32 @@ $arr = array($payu_data["key"], $payu_data['txnid'], $payu_data['amount'], $payu
     $payu_data['firstname'], $payu_data['email'], "", "", "", "", "", "", "", "", "", "", $payu_salt);
 $payu_data['hash'] = hash("sha512", implode('|', $arr));
 
-// TODO: add details to database, and to session, in surl, check both
-$_SESSION['payu'] = $payu_data;
+// add details to database, and to session; and in surl, check both
+$_SESSION['payu_stuff'] = $payu_data;
 $payu_db_val = base64_encode(serialize($payu_data));
 
-$query = "UPDATE `tosc` SET `payu_stuff`=? WHERE `techid` = ?;" // continue
+$query = "UPDATE `tosc` SET `payu_stuff`=? WHERE `techid` = ?;";
+if ($stmt = $mysqli->prepare($query)) {
+    if (!$stmt->bind_param('bs', $payu_data, $_SESSION['techid'])) {
+        $return['status'] = "error";
+        $return['msg'] = "binding params failed: " . $mysqli->error;
+        error_log($return['msg']);
+        exit(json_encode($return));
+    }
+    if (!$stmt->execute()) {
+        $return['status'] = "error";
+        $return['msg'] = "execution failed: " . $stmt->error;
+        error_log($return['msg']);
+        exit(json_encode($return));
+    }
+    $stmt->close();
+} else {
+    $return['status'] = "error";
+    $return['msg'] = "stmt preparation failed";
+    error_log($return['msg']);
+    exit(json_encode($return));
+}
 
-?>
+$return['status'] = "success";
+$return['payu_data'] = $payu_data;
+exit(json_encode($return));
