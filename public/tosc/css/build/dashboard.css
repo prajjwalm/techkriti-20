@@ -175,7 +175,7 @@ pre {
   left: 50%;
   transform: translate(-50%, 0);
   display: block;
-  padding: 0;
+  padding: 12px;
   overflow: hidden !important;
   font-family: Montserrat, sans-serif;
   width: 180px;
@@ -315,7 +315,7 @@ pre {
     width: 240px;
     transform: translate(-50%, 0);
     display: block;
-    padding: 0;
+    padding: 12px;
     overflow: hidden !important;
     font-family: Montserrat, sans-serif;
     border-width: 0;

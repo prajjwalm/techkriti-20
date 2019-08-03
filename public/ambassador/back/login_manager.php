@@ -11,7 +11,7 @@
 
     // fb-init
     require_once 'vendor/autoload.php';
-    require "../../../fb_vars.php";
+    require __DIR__."/../../../fb_vars.php";
 
     $fb = new Facebook\Facebook([
         'app_id' => $my_fb_app_id,

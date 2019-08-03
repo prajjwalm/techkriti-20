@@ -1,16 +1,16 @@
 $(function () {
     $(".row").click(function () {
-        $(".card-s, .card-m, .card-l").addClass('hidden');
         if ($(this).hasClass('selected')) {
-            $('.row').removeClass('selected');
+        //    $('.row').removeClass('selected');
         } else {
+            $(".card-s, .card-m, .card-l").addClass('hidden');
             $('.row').removeClass('selected');
             $(this).addClass('selected');
             let name = $(this).attr('id');
             $('.c_' + name).removeClass('hidden');
         }
     });
-
+/*
     $(".card-s .close, .card-m .close, .card-l .close").click(function () {
         let card = $(this).parent();
         card.addClass('hidden');
@@ -27,5 +27,5 @@ $(function () {
             // action when all are hidden
             tab.removeClass('selected');
         }
-    });
+    });*/
 });

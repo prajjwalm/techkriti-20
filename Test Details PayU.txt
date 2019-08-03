@@ -1,0 +1,13 @@
+For test server, 
+Please redirect to (https://test.payu.in/_payment), 
+
+Please use the following test credential:
+Merchant Key: gtKFFx
+SALT: eCwWELxi
+
+
+Test Cards:
+Card Name: Any name
+Card Number: 5123 4567 8901 2346
+CVV: 123
+Expiry: May 2020

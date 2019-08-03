@@ -15,6 +15,7 @@
         }
     }
 
+    // do not change the keyspace, others(payment_manager.php) expect team to be in this format
     function random_str($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyz') {
         $pieces = [];
         $max = strlen($keyspace) - 1;

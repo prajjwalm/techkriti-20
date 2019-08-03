@@ -1,10 +1,46 @@
 <?php
-// ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/../../session'));
 session_start();
-if (empty($_SESSION['techid'])) {
+if (empty($_SESSION['techid']) || empty($_SESSION['team'])) {
     session_destroy();
     header("Location: index.php");
 }
+
+$paid = false;
+if (empty($_SESSION['paid'])) {
+    // retrieve payment info from db;
+
+    // ready mysql
+    require "../../mysql_vars.php";
+    $mysqli = new mysqli($hostname, $username, $password, $dbname);
+    if (mysqli_connect_errno()) {
+        $return['status'] = "error";
+        error_log("Connection failed in dashboard: " . mysqli_connect_error());
+    }
+
+    // retrieve if paid
+    $check_query = "SELECT EXISTS (SELECT 1 FROM tosc WHERE `team` = ? AND `paid` = 1) AS `payment_done`;";
+    if ($check_stmt = $mysqli->prepare($check_query)){
+        if (!$check_stmt->bind_param("s", $_SESSION['team'])){
+            error_log("binding check params failed in dashboard");
+        }
+        if (!$check_stmt->execute()) {
+            error_log("check execution failed");
+        }
+        $check_stmt->bind_result($check_result);
+        while ($check_stmt->fetch()) {
+            if ($check_result) {
+                $paid = true;
+            }
+        }
+    } else {
+        error_log("check preparation error: " . $check_stmt->error);
+    }
+    $check_stmt->close();
+    $_SESSION['paid'] = $paid;
+} else {
+    $paid = $_SESSION['paid'];
+}
+
 ?>
 
 
@@ -46,13 +82,9 @@ if (empty($_SESSION['techid'])) {
         <div class="header">
             <h3>TOSC Dashboard</h3>
         </div>
-        <!-- div class="row selected" id="home">
-            <div class = "icon"><i class="fas fa-home"></i></div>
-            <span class="desc">Home</span>
-        </div -->
-        <div class="row" id="member_details">
+        <div class="row selected" id="member_details">
             <div class="icon"><i class="fas fa-user-friends"></i></div>
-            <span class="desc">Member Details</span>
+            <span class="desc">Team Details</span>
         </div>
         <div class="row" id="payments">
             <div class="icon"><i class="fas fa-credit-card"></i></div>
@@ -125,12 +157,11 @@ if (empty($_SESSION['techid'])) {
                 <button class="btn" type="button"><span>Action</span></button>
             </div>
         </div -->
-        <div id = "member1" class = "card-s c_member_details hidden padded">
+        <div id = "member1" class = "card-s c_member_details padded">
             <div class="card-title">
-                Your details
+                <?php echo $_SESSION['name'] ?>
             </div>
             <div class="card-description">
-                Name:           <?php echo $_SESSION['name'] ?> <br/>
                 Parent Name:    <?php echo $_SESSION['parent']  ?> <br/>
                 Tech Id:        <?php echo $_SESSION['techid']  ?> <br/>
                 School:         <?php echo $_SESSION['school']  ?> <br/>
@@ -139,13 +170,12 @@ if (empty($_SESSION['techid'])) {
                 Fees Paid:      <?php echo $_SESSION['paid'] ? "yes" : "no" ?> <br/>
             </div>
         </div>
-        <div id = "member2" class = "card-s c_member_details hidden padded">
+        <div id = "member2" class = "card-s c_member_details padded">
             <div class="card-title">
-                Your Teammate's details
+                <?php echo $_SESSION['name2'] ?>
             </div>
             <?php if ($_SESSION['mem2']): ?>
             <div class="card-description">
-                Name:           <?php echo $_SESSION['name2'] ?> <br/>
                 Parent Name:    <?php echo $_SESSION['parent2']  ?> <br/>
                 Tech Id:        <?php echo $_SESSION['techid2']  ?> <br/>
                 School:         <?php echo $_SESSION['school2']  ?> <br/>
@@ -161,9 +191,9 @@ if (empty($_SESSION['techid'])) {
             <div class="img-space">
                 <img src="assets/images/payment.jpg" alt="" />
             </div>
-            <div class="floating-action-button close">
+            <!--div class="floating-action-button close">
                 <i class="fas fa-times"></i>
-            </div>
+            </div-->
             <div class="card-title">
                 Proceed to payment
             </div>
@@ -171,7 +201,13 @@ if (empty($_SESSION['techid'])) {
                 Click on the button below to be redirected to PayU to pay the tosc exam fees
             </div>
             <div class = "action">
-                <button id = 'PAY' class="btn" type="button"><span>Proceed to Payment</span></button>
+                <form action="back/payment_manager.php" method="post">
+                    <?php if (! $paid): ?>
+                    <input type="submit" id='PAY' class="btn" value="Proceed To Payment"/>
+                    <?php else: ?>
+                    <br /> Payment already received
+                    <?php endif; ?>
+                </form>
             </div>
         </div>
 
