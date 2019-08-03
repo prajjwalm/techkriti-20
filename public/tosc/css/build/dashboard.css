@@ -37,6 +37,8 @@ body {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
+  background-color: #d0e0f7;
+  z-index: -1;
 }
 
 pre {
@@ -60,6 +62,8 @@ pre {
   overflow: hidden;
   position: relative;
   transition: all 0.3s;
+  background-color: #fff;
+  z-index: 1;
 }
 
 #sidenav {
@@ -123,6 +127,8 @@ pre {
   height: 400px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   text-align: justify;
+  border-color: #f9cc17 !important;
+  border-width: 3px !important;
   /* Styles, not important */
 }
 .card-s .img-space, .card-m .img-space, .card-l .img-space {
@@ -133,6 +139,9 @@ pre {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.card-s .img-space img.contain, .card-m .img-space img.contain, .card-l .img-space img.contain {
+  object-fit: contain !important;
 }
 .card-s .floating-action-button, .card-m .floating-action-button, .card-l .floating-action-button {
   background-color: #6195FF;
@@ -163,11 +172,16 @@ pre {
   font-weight: bold;
   padding: 12px 8px;
   font-family: Montserrat, sans-serif;
+  text-align: center;
 }
 .card-s .card-description, .card-m .card-description, .card-l .card-description {
   padding-left: 8px;
   padding-right: 8px;
-  font-size: 14px;
+  font-size: 13px;
+  text-align: center;
+}
+.card-s .card-description .bold, .card-m .card-description .bold, .card-l .card-description .bold {
+  font-weight: bold;
 }
 .card-s .btn, .card-m .btn, .card-l .btn {
   position: absolute;

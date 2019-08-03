@@ -10,6 +10,8 @@ $color-grey2: #F4F4F4;
 $color-grey3: #FAFAFA;
 $color-white: #FFF;
 $color-input: #354052;
+$color-bkgd: #d0e0f7;
+$color-logo: #f9cc17;
 
 $default-shadow1: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
 $default-shadow2: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -53,6 +55,8 @@ body {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
+  background-color: $color-bkgd;
+  z-index: -1;
 }
 
 pre {
@@ -76,6 +80,8 @@ pre {
   overflow: hidden;
   position: relative;
   transition: all 0.3s;
+  background-color: #fff;
+  z-index: 1;
 }
 
 #sidenav {
@@ -148,6 +154,8 @@ pre {
   height: $s-card-height;
   box-shadow: $default-shadow;
   text-align: justify;
+  border-color: $color-logo !important;
+  border-width: 3px !important;
 
   .img-space {
     width: 100%;
@@ -157,6 +165,10 @@ pre {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    img.contain {
+      object-fit: contain !important;
     }
   }
 
@@ -193,12 +205,18 @@ pre {
     font-weight: bold;
     padding: 12px 8px;
     font-family: Montserrat, sans-serif;
+    text-align: center;
   }
 
   .card-description {
     padding-left: 8px;
     padding-right: 8px;
-    font-size: 14px;
+    font-size: 13px;
+    text-align: center;
+
+    .bold {
+      font-weight: bold;
+    }
   }
 
   .btn {

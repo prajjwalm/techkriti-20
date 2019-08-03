@@ -90,6 +90,10 @@ if (empty($_SESSION['paid'])) {
             <div class="icon"><i class="fas fa-credit-card"></i></div>
             <span class="desc">Payments</span>
         </div>
+        <div class="row" id="sample">
+            <div class="icon"><i class="fas fa-file-download"></i></div>
+            <span class="desc">Sample Paper</span>
+        </div>
         <div class="row" id="sign_out">
             <div class="icon"><i class="fas fa-sign-out-alt"></i></div>
             <span class="desc">Sign out</span>
@@ -158,30 +162,36 @@ if (empty($_SESSION['paid'])) {
             </div>
         </div -->
         <div id = "member1" class = "card-s c_member_details padded">
+            <div class = "img-space">
+                <img src="assets/images/logo.png" alt = "" class = "contain"/>
+            </div>
             <div class="card-title">
                 <?php echo $_SESSION['name'] ?>
             </div>
             <div class="card-description">
-                Parent Name:    <?php echo $_SESSION['parent']  ?> <br/>
-                Tech Id:        <?php echo $_SESSION['techid']  ?> <br/>
-                School:         <?php echo $_SESSION['school']  ?> <br/>
-                Grade:          <?php echo $_SESSION['grade']  ?> <br/>
-                Pool:           <?php echo intval($_SESSION['grade']) < 11 ? "A"  : "B" ; ?> <br/>
-                Fees Paid:      <?php echo $_SESSION['paid'] ? "yes" : "no" ?> <br/>
+                <span class="bold"> Tech Id:        </span><?php echo $_SESSION['techid']  ?> <br/>
+                <span class="bold"> Grade:          </span><?php echo $_SESSION['grade']  ?> <br/>
+                <span class="bold"> Pool:           </span><?php echo intval($_SESSION['grade']) < 11 ? "A"  : "B" ; ?> <br/>
+                <span class="bold"> School:         </span><?php echo $_SESSION['school']  ?> <br/>
+                <span class="bold"> Fees Paid:      </span><?php echo $_SESSION['paid'] ? "yes" : "no" ?> <br/>
+                <span class="bold"> Parent's Name:  </span><?php echo $_SESSION['parent']  ?> <br/>
             </div>
         </div>
         <div id = "member2" class = "card-s c_member_details padded">
+            <div class = "img-space">
+                <img src="assets/images/logo.png" alt = "" class="contain"/>
+            </div>
             <div class="card-title">
                 <?php echo $_SESSION['name2'] ?>
             </div>
             <?php if ($_SESSION['mem2']): ?>
             <div class="card-description">
-                Parent Name:    <?php echo $_SESSION['parent2']  ?> <br/>
-                Tech Id:        <?php echo $_SESSION['techid2']  ?> <br/>
-                School:         <?php echo $_SESSION['school2']  ?> <br/>
-                Grade:          <?php echo $_SESSION['grade2']  ?> <br/>
-                Pool:           <?php echo intval($_SESSION['grade2']) < 11 ? "A"  : "B" ; ?> <br/>
-                Fees Paid:      <?php echo $_SESSION['paid2'] ? "yes" : "no" ?> <br/>
+                <span class="bold"> Tech Id:        </span><?php echo $_SESSION['techid2']  ?> <br/>
+                <span class="bold"> Grade:          </span><?php echo $_SESSION['grade2']  ?> <br/>
+                <span class="bold"> Pool:           </span><?php echo intval($_SESSION['grade2']) < 11 ? "A"  : "B" ; ?> <br/>
+                <span class="bold"> School:         </span><?php echo $_SESSION['school2']  ?> <br/>
+                <span class="bold"> Fees Paid:      </span><?php echo $_SESSION['paid2'] ? "yes" : "no" ?> <br/>
+                <span class="bold"> Parent's Name:      </span><?php echo $_SESSION['parent2']  ?> <br/>
             </div>
             <?php else: ?>
                 Couldn't retrieve teammate's details. Please report this problem
@@ -208,6 +218,11 @@ if (empty($_SESSION['paid'])) {
                     <br /> Payment already received
                     <?php endif; ?>
                 </form>
+            </div>
+        </div>
+        <div id = "to_payment" class = "card-s c_sample hidden" style = "width: 272px; height: 180px; display: flex; align-items: center; justify-content: center;">
+            <div class="card-title" style="font-size: 32px;">
+                Coming Soon !!
             </div>
         </div>
 

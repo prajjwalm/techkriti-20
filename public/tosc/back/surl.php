@@ -73,7 +73,9 @@ if ($stmt = $mysqli->prepare($query)) {
 } else {
     $ERR = true;
     $msg = "surl stmt preparation failed";
-    error_log($return['msg']);
+    error_log($msg);
+
+
 }
 
 ?>
