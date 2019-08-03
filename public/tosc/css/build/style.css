@@ -477,17 +477,15 @@ ul, ol {
   font-size: 12px;
   background: transparent;
   min-width: fit-content;
-  width: calc(80vw - 70px);
-  max-width: 480px;
+  width: 48px;
   position: fixed;
-  height: 72px;
-  top: auto;
-  bottom: 0;
-  left: 4vw;
-  border-top-left-radius: 8px;
+  height: 256px;
+  top: 30vh;
+  left: 0;
   border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -524,7 +522,7 @@ ul, ol {
   position: fixed;
   right: 0;
   top: 124px;
-  min-width: 20vw;
+  min-width: 10vw;
   padding: 12px;
   display: flex;
   flex-wrap: wrap;
@@ -848,7 +846,7 @@ header {
 }
 
 #fixed-side-links i {
-  font-size: 48px;
+  font-size: 32px;
 }
 
 .btn-space {
@@ -1084,7 +1082,7 @@ header {
 #modal-shadow #modal-login {
   position: fixed;
   min-width: 256px;
-  min-height: 280px;
+  min-height: 440px;
   width: 36vw;
   height: 60vh;
   top: 50vh;
@@ -1099,6 +1097,15 @@ header {
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   /* Stylized Text Input */
+}
+#modal-shadow #modal-login #logo {
+  width: 100%;
+  height: 72px;
+  display: flex;
+  justify-content: center;
+}
+#modal-shadow #modal-login #logo img {
+  transform: translate(0, -16px);
 }
 #modal-shadow #modal-login .row {
   display: flex;
@@ -1471,8 +1478,8 @@ header {
     padding-left: 12px;
   }
 
-  #fixed-side-links i {
-    font-size: 32px;
+  #fixed-side-links {
+    display: none !important;
   }
 
   .row-bar {
@@ -1498,6 +1505,21 @@ header {
 
   #modal-login {
     padding: 16px !important;
+    position: absolute;
+    min-width: 256px;
+    min-height: 440px;
+    width: 36vw;
+    height: 60vh;
+    top: 20vh;
+    left: 50vw;
+    z-index: 32;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
   }
 }
 /*------------------------------------*\

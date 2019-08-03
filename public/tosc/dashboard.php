@@ -18,9 +18,9 @@ if (empty($_SESSION['paid'])) {
     }
 
     // retrieve if paid
-    $check_query = "SELECT EXISTS (SELECT 1 FROM tosc WHERE `team` = ? AND `paid` = 1) AS `payment_done`;";
+    $check_query = "SELECT EXISTS (SELECT 1 FROM tosc WHERE `techid` = ? AND `paid` = 1) AS `payment_done`;";
     if ($check_stmt = $mysqli->prepare($check_query)){
-        if (!$check_stmt->bind_param("s", $_SESSION['team'])){
+        if (!$check_stmt->bind_param("s", $_SESSION['techid'])){
             error_log("binding check params failed in dashboard");
         }
         if (!$check_stmt->execute()) {
@@ -181,7 +181,7 @@ if (empty($_SESSION['paid'])) {
                 School:         <?php echo $_SESSION['school2']  ?> <br/>
                 Grade:          <?php echo $_SESSION['grade2']  ?> <br/>
                 Pool:           <?php echo intval($_SESSION['grade2']) < 11 ? "A"  : "B" ; ?> <br/>
-                Fees Paid:      <?php echo $_SESSION['paid'] ? "yes" : "no" ?> <br/>
+                Fees Paid:      <?php echo $_SESSION['paid2'] ? "yes" : "no" ?> <br/>
             </div>
             <?php else: ?>
                 Couldn't retrieve teammate's details. Please report this problem

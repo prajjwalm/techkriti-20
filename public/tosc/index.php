@@ -577,6 +577,9 @@ session_start();
         <div class = "section-header text-center">
             <h3 class="title">Login To Dashboard</h3>
         </div>
+        <div id = "logo">
+            <img src="assets/images/O.png" />
+        </div>
         <div class = "row">
             <div id = "email" class="main-input cell l">
                 <div class="group">

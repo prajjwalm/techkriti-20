@@ -76,7 +76,7 @@ do {
 $payu_data['key'] = "gtKFFx";
 $payu_salt = "eCwWELxi";
 $payu_data['txnid'] = $proposedTxn;
-$payu_data['amount'] = "300";
+$payu_data['amount'] = "150";
 $payu_data['productinfo'] = "registration amount for tosc19";
 $payu_data['firstname'] = $_SESSION['name'];                    // explode(' ', trim($_SESSION['name']))[0];
 $payu_data['email'] = $_SESSION['email'];

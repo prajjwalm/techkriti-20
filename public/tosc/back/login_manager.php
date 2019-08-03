@@ -104,10 +104,9 @@ if ($stmt = $mysqli->prepare($query)){
                 $_SESSION["mob2"]    = $mob2;
                 $_SESSION["school2"] = $school2;
                 $_SESSION["grade2"]  = $grade2;
-                $_SESSION["paid"]    = ($paid || $paid2) ? true: false;
+                $_SESSION["paid"]    = $paid ? true: false;
                 $_SESSION["txnid2"]  = $txnid2;
-            } else {
-                $_SESSION['paid'] = $paid ? true: false;
+                $_SESSION['paid2'] = $paid2 ? true: false;
             }
 
             $return['status'] = "success";
